@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,10 +14,21 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/',function (){
-    return view('backend.layouts.home');
-});
+//www.summer.com
+//localhost/projectname/public/category
+Route::get('/',[HomeController::class,'home']);
+Route::get('/contact',[HomeController::class,'contact']);
 
-Route::get('/contact',function (){
-    return view('backend.layouts.contact');
-});
+Route::get('/categories',[CategoryController::class,'list'])->name('category.list');
+Route::get('/category/create',[CategoryController::class,'create'])->name('category.create');
+
+
+Route::get('/products',[ProductController::class,'list'])->name('product.list');
+// uri, controller,method
+
+//model
+//view
+//route
+//controller
+    //method
+
