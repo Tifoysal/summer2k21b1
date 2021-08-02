@@ -21,6 +21,7 @@ Route::get('/contact',[HomeController::class,'contact']);
 
 Route::get('/categories',[CategoryController::class,'list'])->name('category.list');
 Route::get('/category/create',[CategoryController::class,'create'])->name('category.create');
+Route::post('/category/store',[CategoryController::class,'store'])->name('category.store');
 
 
 Route::get('/products',[ProductController::class,'list'])->name('product.list');

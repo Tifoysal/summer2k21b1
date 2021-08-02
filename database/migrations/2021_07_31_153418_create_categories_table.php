@@ -20,6 +20,8 @@ class CreateCategoriesTable extends Migration
             $table->string('image')->nullable();
             $table->string('status',10)->default('active');
             $table->timestamps();
+            //created_at
+            //updated_at
         });
     }
 
