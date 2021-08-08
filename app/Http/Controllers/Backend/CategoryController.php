@@ -10,7 +10,11 @@ class CategoryController extends Controller
 {
     public function list()
     {
-       return view('backend.layouts.category.list');
+        //get all data from category table
+        //DML- select * from categories;
+        $categories=Category::all(); // get(), first(),find();
+
+       return view('backend.layouts.category.list',compact('categories'));
     }
 
     public function create()
@@ -27,6 +31,6 @@ class CategoryController extends Controller
             'details'=>$request->description
         ]);
 
-        return redirect()->back();
+        return redirect()->route('category.list');
     }
 }

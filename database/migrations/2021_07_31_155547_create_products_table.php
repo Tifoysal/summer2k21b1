@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->double('price',10,2)->default(0.00);
             $table->integer('stock')->default(0);
             $table->text('description')->nullable();
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->string('status',10)->default('active');
             $table->timestamps();
         });

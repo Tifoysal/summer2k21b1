@@ -25,6 +25,7 @@ Route::post('/category/store',[CategoryController::class,'store'])->name('catego
 
 
 Route::get('/products',[ProductController::class,'list'])->name('product.list');
+Route::post('/products/store',[ProductController::class,'store'])->name('product.store');
 // uri, controller,method
 
 //model
