@@ -1,6 +1,6 @@
 @extends('backend.master')
 @section('content')
-    <h1>Product List</h1>
+    <h1>Products</h1>
 
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
@@ -14,6 +14,7 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">Product Name</th>
+            <th scope="col">Category Name</th>
             <th scope="col">Price</th>
             <th scope="col">Status</th>
             <th scope="col">Action</th>
@@ -24,6 +25,7 @@
         <tr>
             <th scope="row">{{$product->id}}</th>
             <td>{{$product->name}}</td>
+            <td>{{$product->category_id}}</td>
             <td>{{$product->price}} .BDT</td>
             <td >
                 {{$product->status}}
@@ -34,7 +36,12 @@
         </tr>
         @endforeach
         </tbody>
+
     </table>
+
+        {{$products->links('pagination::bootstrap-4')}}
+
+
 
 
 
@@ -45,6 +52,7 @@
          aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
+
                 <form action="{{route('product.store')}}" method="POST">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Add new Product</h5>
@@ -54,6 +62,15 @@
                     </div>
                     <div class="modal-body">
                         @csrf
+                        <div class="form-group">
+                            <label for="product_name">Select Category</label>
+                            <select class="form-control" name="category_id" id="">
+                                @foreach($categories as $cat)
+                                <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                @endforeach
+                            </select>
+                            </div>
+
                         <div class="form-group">
                             <label for="product_name">Name</label>
                             <input type="text" class="form-control" id="product_name" name="product_name" placeholder="Enter Product name">
