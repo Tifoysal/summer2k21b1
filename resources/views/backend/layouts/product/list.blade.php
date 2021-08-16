@@ -25,7 +25,7 @@
         <tr>
             <th scope="row">{{$product->id}}</th>
             <td>{{$product->name}}</td>
-            <td>{{$product->category_id}}</td>
+            <td>{{$product->category->name}}</td>
             <td>{{$product->price}} .BDT</td>
             <td >
                 {{$product->status}}

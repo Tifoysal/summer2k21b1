@@ -13,9 +13,12 @@ class ProductController extends Controller
     public function list()
     {
 //        dd("ok");
-        $products=Product::paginate(5);
-        $categories=Category::all();
+        //eager load
+        //lazy load
+
+        $products=Product::with('category')->paginate(10);
 //        dd($products);
+        $categories=Category::all();
         return view('backend.layouts.product.list',compact('products','categories'));
     }
 
