@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -32,5 +33,14 @@ class CategoryController extends Controller
         ]);
 
         return redirect()->route('category.list');
+    }
+
+    public function allProduct($id)
+    {
+        $products=Product::where('category_id',$id)->get();
+//        $category=Category::with('products')->find($id);//using relationshop
+//        dd($products);
+
+        return view('backend.layouts.category.product-list',compact('products'));
     }
 }

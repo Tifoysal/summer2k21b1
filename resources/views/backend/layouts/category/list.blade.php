@@ -24,7 +24,7 @@
         <td>{{$category->name}}</td>
         <td>{{$category->status}}</td>
         <td>
-            <a href="" class="btn btn-primary">view</a>
+            <a href="{{route('category.product',$category->id)}}" class="btn btn-primary">view</a>
         </td>
     </tr>
 @endforeach
