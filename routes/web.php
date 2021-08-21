@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ProductController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Backend\HomeController;
+use App\Http\Controllers\Frontend\HomeController as FrontendHome;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -16,17 +17,25 @@ use Illuminate\Support\Facades\Route;
 */
 //www.summer.com
 //localhost/projectname/public/category
-Route::get('/',[HomeController::class,'home']);
-Route::get('/contact',[HomeController::class,'contact']);
 
-Route::get('/categories',[CategoryController::class,'list'])->name('category.list');
-Route::get('/category/create',[CategoryController::class,'create'])->name('category.create');
-Route::post('/category/store',[CategoryController::class,'store'])->name('category.store');
-Route::get('/category/{id}/products',[CategoryController::class,'allProduct'])->name('category.product');
+Route::get('/',[FrontendHome::class,'home'])->name('home');
+Route::get('/shoes',[FrontendHome::class,'shoes'])->name('shoes');
 
 
-Route::get('/products',[ProductController::class,'list'])->name('product.list');
-Route::post('/products/store',[ProductController::class,'store'])->name('product.store');
+//admin panel routes
+Route::group(['prefix'=>'admin'],function(){
+    Route::get('/',[HomeController::class,'home']);
+    Route::get('/contact',[HomeController::class,'contact']);
+
+    Route::get('/categories',[CategoryController::class,'list'])->name('category.list');
+    Route::get('/category/create',[CategoryController::class,'create'])->name('category.create');
+    Route::post('/category/store',[CategoryController::class,'store'])->name('category.store');
+    Route::get('/category/{id}/products',[CategoryController::class,'allProduct'])->name('category.product');
+
+    Route::get('/products',[ProductController::class,'list'])->name('product.list');
+    Route::post('/products/store',[ProductController::class,'store'])->name('product.store');
+});
+
 // uri, controller,method
 
 //model
