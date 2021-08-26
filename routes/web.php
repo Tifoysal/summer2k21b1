@@ -4,6 +4,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\HomeController;
 use App\Http\Controllers\Frontend\HomeController as FrontendHome;
+use App\Http\Controllers\Frontend\UserController;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[FrontendHome::class,'home'])->name('home');
 Route::get('/shoes',[FrontendHome::class,'shoes'])->name('shoes');
+
+Route::get('/signup',[UserController::class,'signupForm'])->name('user.signup');
+Route::post('/signup/store',[UserController::class,'signupFormPost'])->name('user.signup.store');
 
 
 //admin panel routes

@@ -13,8 +13,8 @@
                         <a class="nav-item nav-link" href="{{route('home')}}">Home</a>
                         <a class="nav-item nav-link" href="collection.html">Collection</a>
                         <a class="nav-item nav-link" href="{{route('shoes')}}">Shoes</a>
-                        <a class="nav-item nav-link" href="racing boots.html">Racing Boots</a>
-                        <a class="nav-item nav-link" href="contact.html">Contact</a>
+                        <a class="nav-item nav-link" href="">Login</a>
+                        <a class="nav-item nav-link" href="{{route('user.signup')}}">Signup</a>
                         <a class="nav-item nav-link last" href="#"><img src="images/search_icon.png"></a>
                         <a class="nav-item nav-link last" href="contact.html"><img src="images/shop_icon.png"></a>
                     </div>
