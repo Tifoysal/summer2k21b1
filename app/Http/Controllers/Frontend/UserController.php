@@ -19,6 +19,7 @@ class UserController extends Controller
            'name'=>$request->customer_name,
            'mobile'=>$request->customer_mobile,
            'email'=>$request->customer_email,
+           'role'=>'customer',
            'password'=>bcrypt($request->customer_email),
         ]);
 
