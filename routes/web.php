@@ -29,9 +29,13 @@ Route::post('/signup/store',[UserController::class,'signupFormPost'])->name('use
 
 //admin panel routes
 Route::get('/admin/login',[BackendUser::class,'login'])->name('admin.login');
+Route::post('/admin/login/post',[BackendUser::class,'loginPost'])->name('admin.login.post');
+
 Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
 
-    Route::get('/',[HomeController::class,'home']);
+    Route::get('/',[HomeController::class,'home'])->name('dashboard');
+    Route::get('/logout',[BackendUser::class,'logout'])->name('logout');
+
     Route::get('/contact',[HomeController::class,'contact']);
 
     Route::get('/categories',[CategoryController::class,'list'])->name('category.list');

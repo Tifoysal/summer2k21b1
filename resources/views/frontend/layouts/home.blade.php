@@ -92,7 +92,7 @@
                 <div class="col-sm-4">
                     <div class="best_shoes">
                         <p class="best_text">{{$data->name}} </p>
-                        <div class="shoes_icon"><img src="images/shoes-img4.png"></div>
+                        <div class="shoes_icon"><img width="150px" src="{{url('uploads/'.$data->image)}}"></div>
                         <div class="star_text">
                             <div class="left_part">
 

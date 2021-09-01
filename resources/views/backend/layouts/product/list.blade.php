@@ -13,6 +13,7 @@
         <thead>
         <tr>
             <th scope="col">#</th>
+            <th scope="col">Product image</th>
             <th scope="col">Product Name</th>
             <th scope="col">Category Name</th>
             <th scope="col">Price</th>
@@ -24,6 +25,9 @@
         @foreach($products as $product)
         <tr>
             <th scope="row">{{$product->id}}</th>
+            <td>
+                <img src="{{url('/uploads/'.$product->image)}}" width="100px" alt="product image">
+            </td>
             <td>{{$product->name}}</td>
             <td>{{$product->category->name}}</td>
             <td>{{$product->price}} .BDT</td>
@@ -53,7 +57,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
 
-                <form action="{{route('product.store')}}" method="POST">
+                <form action="{{route('product.store')}}" method="POST" enctype="multipart/form-data">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Add new Product</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -84,6 +88,11 @@
                             <label for="description">Description</label>
                             <textarea name="description" id="description" class="form-control" placeholder="Enter product description" ></textarea>
                         </div>
+
+                        <div class="form-group">
+                            <label for="description">Upload Product Image</label>
+                            <input type="file" class="form-control" name="product_image">
+                          </div>
 
 
                     </div>
