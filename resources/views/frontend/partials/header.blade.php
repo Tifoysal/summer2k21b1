@@ -13,8 +13,14 @@
                         <a class="nav-item nav-link" href="{{route('home')}}">Home</a>
                         <a class="nav-item nav-link" href="collection.html">Collection</a>
                         <a class="nav-item nav-link" href="{{route('shoes')}}">Shoes</a>
-                        <a class="nav-item nav-link" href="">Login</a>
-                        <a class="nav-item nav-link" href="{{route('user.signup')}}">Signup</a>
+                        @if(auth()->user())
+                        <a class="nav-item nav-link" href="{{route('customer.logout')}}">Logout</a>
+                        <a class="nav-item nav-link" href="">{{auth()->user()->name}}</a>
+                        @else
+                            <a class="nav-item nav-link" href="{{route('customer.login')}}">Login</a>
+                            <a class="nav-item nav-link" href="{{route('user.signup')}}">Signup</a>
+
+                            @endif
                         <a class="nav-item nav-link last" href="#"><img src="images/search_icon.png"></a>
                         <a class="nav-item nav-link last" href="contact.html"><img src="images/shop_icon.png"></a>
                     </div>

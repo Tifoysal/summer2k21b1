@@ -23,15 +23,25 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[FrontendHome::class,'home'])->name('home');
 Route::get('/shoes',[FrontendHome::class,'shoes'])->name('shoes');
 
+//login here
+Route::get('/login',[UserController::class,'login'])->name('customer.login');
+Route::post('/login/post',[UserController::class,'doLogin'])->name('customer.do.login');
+
 Route::get('/signup',[UserController::class,'signupForm'])->name('user.signup');
 Route::post('/signup/store',[UserController::class,'signupFormPost'])->name('user.signup.store');
+
+Route::group(['prefix'=>'customer','middleware'=>'auth'],function (){
+    Route::get('/logout',[UserController::class,'logout'])->name('customer.logout');
+});
+
+
 
 
 //admin panel routes
 Route::get('/admin/login',[BackendUser::class,'login'])->name('admin.login');
 Route::post('/admin/login/post',[BackendUser::class,'loginPost'])->name('admin.login.post');
 
-Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
+Route::group(['prefix'=>'admin','middleware'=>['auth','role']],function(){
 
     Route::get('/',[HomeController::class,'home'])->name('dashboard');
     Route::get('/logout',[BackendUser::class,'logout'])->name('logout');
