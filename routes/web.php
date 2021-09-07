@@ -53,7 +53,11 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','role']],function(){
     Route::post('/category/store',[CategoryController::class,'store'])->name('category.store');
     Route::get('/category/{id}/products',[CategoryController::class,'allProduct'])->name('category.product');
 
+    //products
     Route::get('/products',[ProductController::class,'list'])->name('product.list');
+    Route::get('/products/delete/{id}',[ProductController::class,'delete'])->name('product.delete');
+    Route::get('/products/edit/{id}',[ProductController::class,'edit'])->name('product.edit');
+    Route::put('/products/update/{id}',[ProductController::class,'update'])->name('product.update');
     Route::post('/products/store',[ProductController::class,'store'])->name('product.store');
 
     Route::get('/customers',[BackendUser::class,'customerList'])->name('customer.list');

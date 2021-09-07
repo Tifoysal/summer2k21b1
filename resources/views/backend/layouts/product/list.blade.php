@@ -2,12 +2,18 @@
 @section('content')
     <h1>Products</h1>
 
+    <div>
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
         <i class="bi bi-alarm"></i>
         Create Product
     </button>
-
+    </div>
+    @if(session()->has('message'))
+        <div class="row" style="padding: 10px;">
+            <span class="alert alert-success">{{session()->get('message')}}</span>
+        </div>
+    @endif
 
     <table class="table">
         <thead>
@@ -36,6 +42,8 @@
                 </td>
             <td>
                 <a href="" class="btn btn-success">View</a>
+                <a href="{{route('product.edit',$product->id)}}" class="btn btn-warning">Edit</a>
+                <a onclick="return confirm('Are you sure you want to delete this item?');" href="{{route('product.delete',$product->id)}}" class="btn btn-danger">Delete</a>
             </td>
         </tr>
         @endforeach

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -43,5 +44,44 @@ class ProductController extends Controller
         ]);
 
         return redirect()->back();
+    }
+
+    /**
+     * @param $id
+     * @return RedirectResponse
+     */
+    public function delete($id): RedirectResponse
+    {
+//        Product::destroy($id);
+        $product=Product::find($id);
+        if($product)
+        {
+            $product->delete();
+            return redirect()->back()->with('message','Product Deleted successfully.');
+        }
+        return redirect()->back()->with('message','No product found to delete.');
+    }
+
+
+    public function edit($id)
+    {
+        $product=Product::find($id);
+//        dd($product);
+        $categories=Category::all();
+        return view('backend.layouts.product.edit',compact('categories','product'));
+    }
+
+    public function update(Request $request,$id)
+    {
+//        dd($request->all());
+        $product=Product::find($id);
+        $product->update([
+            'category_id'=>$request->category_id,
+            'name'=>$request->product_name,
+            'price'=>$request->product_price,
+            'description'=>$request->description,
+        ]);
+
+        return redirect()->route('product.list')->with('message','product updated successfully.');
     }
 }
