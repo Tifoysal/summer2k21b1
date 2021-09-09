@@ -89,7 +89,10 @@
             <div class="row">
 
                 @foreach($products as $data)
+
                 <div class="col-sm-4">
+                    <a href="{{route('product.view',$data->id)}}">
+{{--                    <a href="{{url('/product/'.$data->id)}}">--}}
                     <div class="best_shoes">
                         <p class="best_text">{{$data->name}} </p>
                         <div class="shoes_icon"><img width="150px" src="{{url('uploads/'.$data->image)}}"></div>
@@ -102,6 +105,7 @@
                             </div>
                         </div>
                     </div>
+                    </a>
                 </div>
                 @endforeach
 

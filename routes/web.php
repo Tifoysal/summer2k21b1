@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Frontend\ProductController as HomeProductController;
 use App\Http\Controllers\Backend\HomeController;
 use App\Http\Controllers\Frontend\HomeController as FrontendHome;
 use App\Http\Controllers\Frontend\UserController;
@@ -22,6 +23,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[FrontendHome::class,'home'])->name('home');
 Route::get('/shoes',[FrontendHome::class,'shoes'])->name('shoes');
+
+
+//product
+Route::get('/product/{id}',[HomeProductController::class,'viewProduct'])->name('product.view');
+
 
 //login here
 Route::get('/login',[UserController::class,'login'])->name('customer.login');
