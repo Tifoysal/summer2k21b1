@@ -10,6 +10,12 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
+                        <form action="{{route('search')}}" method="get">
+{{--                            @csrf--}}
+                        <input style="width: 250px;" type="text" placeholder="Search" name="search" class="form-control">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa fa-search"></i></button>
+                        </form>
                         <a class="nav-item nav-link" href="{{route('home')}}">Home</a>
                         <a class="nav-item nav-link" href="collection.html">Collection</a>
                         <a class="nav-item nav-link" href="{{route('shoes')}}">Shoes</a>

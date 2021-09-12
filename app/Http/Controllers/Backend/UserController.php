@@ -21,7 +21,7 @@ class UserController extends Controller
 
         if(Auth::attempt($credentials))
         {
-           if(auth()->user()->role=='admin')
+           if(auth()->user()->role=='admin' || auth()->user()->role=='manager')
            {
                return redirect()->route('dashboard');
            }else
