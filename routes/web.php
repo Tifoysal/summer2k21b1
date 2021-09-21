@@ -37,6 +37,7 @@ Route::get('/signup',[UserController::class,'signupForm'])->name('user.signup');
 Route::post('/signup/store',[UserController::class,'signupFormPost'])->name('user.signup.store');
 
 Route::get('/search',[HomeProductController::class,'search'])->name('search');
+Route::post('/data-range-search',[\App\Http\Controllers\BookingController::class,'dateSearch'])->name('date.search');
 
 Route::group(['prefix'=>'customer','middleware'=>'auth'],function (){
     Route::get('/logout',[UserController::class,'logout'])->name('customer.logout');

@@ -3,8 +3,24 @@
     @include('frontend.partials.slider')
 @endsection
 @section('contents')
+    <form action="{{route('date.search')}}" method="post">
+        @csrf
+<div class="row" style="padding-left: 300px;padding-top: 100px;">
+
+    <div class="col-md-4">
+        <input name="from_date" type="date" class="form-control">
+    </div>
+    <div class="col-md-4">
+        <input name="to_date" type="date" class="form-control">
+    </div>
+    <div class="col-md-4">
+        <button class="btn btn-primary">Search</button>
+    </div>
 
 
+
+</div>
+    </form>
     <!-- new collection section start -->
     <div class="layout_padding collection_section">
         <div class="container">
