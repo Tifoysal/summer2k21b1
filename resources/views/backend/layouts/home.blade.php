@@ -2,27 +2,21 @@
 
 @section('content')
 
-    {{--<h1>{{$title}}</h1>--}}
-    {{--<h6>{{$link}}</h6>--}}
+    <div class="row" style="margin-top: 100px;">
+        <div class="col-md-3" style="background-color: green; padding: 10px; margin-right: 10px">
+            <h1>Total sale</h1>
+            <p><h4>{{$booking_count}}</h4></p>
+        </div>
+        <div class="col-md-3" style="background-color: red; padding: 10px; margin-right: 10px">
+            <h1>Total customer</h1>
+            <p><h4>{{$booking_count}}</h4></p>
+        </div>
+        <div class="col-md-3" style="background-color: orange; padding: 10px; margin-right: 10px;">
+           <h1>Total Booking</h1>
+            <p><h4>{{$booking_count}}</h4></p>
+        </div>
 
-    <h1>
-{{--        <?php--}}
-{{--        for($i = 1;$i <= 10;$i++)--}}
-{{--        {--}}
-{{--        ?>--}}
-{{--        <p>--}}
-{{--            <?php--}}
-{{--            echo $i;--}}
-{{--            ?>--}}
-{{--        </p>--}}
-{{--            <?php--}}
-{{--            }--}}
-{{--            ?>--}}
 
-        @for($i = 1;$i <= 10;$i++)
-        <p>{{$i}}</p>
-        @endfor
-
-    </h1>
+    </div>
 
 @endsection

@@ -55,6 +55,7 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
     Route::group(['middleware'=>'role'],function (){
 
         Route::get('/contact',[HomeController::class,'contact']);
+        Route::get('/booking',[HomeController::class,'report'])->name('report');
 
         Route::get('/categories',[CategoryController::class,'list'])->name('category.list');
         Route::get('/category/create',[CategoryController::class,'create'])->name('category.create');
@@ -73,12 +74,12 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
         Route::get('/customers',[BackendUser::class,'customerList'])->name('customer.list');
         Route::get('/users',[BackendUser::class,'userList'])->name('user.list');
     });
-    Route::group(['prefix'=>'manager','middleware'=>'manager'],function (){
+//    Route::group(['prefix'=>'manager','middleware'=>'manager'],function (){
 
         Route::get('/products',[ProductController::class,'list'])->name('product.list');
         Route::post('/products/store',[ProductController::class,'store'])->name('product.store');
 
-    });
+//    });
     Route::get('/',[HomeController::class,'home'])->name('dashboard');
     Route::get('/logout',[BackendUser::class,'logout'])->name('logout');
 });

@@ -30,9 +30,9 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{route('report')}}">
                     <span data-feather="file"></span>
-                    Orders
+                    Booking
                 </a>
             </li>
 
